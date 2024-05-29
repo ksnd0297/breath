@@ -2,7 +2,13 @@ import {UserOutlined} from "@ant-design/icons";
 import {Divider, Flex} from "antd";
 import {Header as _Header} from "antd/es/layout/layout";
 
-const Header = () => {
+interface Props {
+  handleOpen: () => void;
+}
+
+const Header = (props: Props) => {
+  const {handleOpen} = props;
+
   return (
     <>
       <_Header
@@ -22,6 +28,7 @@ const Header = () => {
             style={{
               fontSize: "24px",
             }}
+            onClick={handleOpen}
           />
         </Flex>
       </_Header>

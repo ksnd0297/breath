@@ -1,11 +1,11 @@
 import {SELECT_OPTION} from "@/constant/layout";
-import {setItem} from "@/utils/localStorage";
+import {getItem, setItem} from "@/utils/localStorage";
 import {Divider, Flex, InputNumber, Select, Modal as _Modal} from "antd";
 import {useState} from "react";
 
 interface Props {
   isModalOpen: boolean;
-  setIsModalOpen: (value: boolean) => void;
+  handleClose: () => void;
 }
 
 export interface Info {
@@ -14,10 +14,12 @@ export interface Info {
 }
 
 const Modal = (props: Props) => {
-  const {isModalOpen, setIsModalOpen} = props;
+  const {isModalOpen, handleClose} = props;
 
-  const [option, setOption] = useState("");
-  const [wage, setWage] = useState<number | null>();
+  const info = getItem<Info>("info");
+
+  const [option, setOption] = useState(info?.option);
+  const [wage, setWage] = useState<number | null>(info?.wage || null);
 
   const onChangeOption = (value: string) => {
     setOption(value);
@@ -30,7 +32,7 @@ const Modal = (props: Props) => {
   const onOk = () => {
     setItem("info", {option, wage});
 
-    setIsModalOpen(false);
+    handleClose();
   };
 
   const isDisabled = !option || !wage;
@@ -57,12 +59,13 @@ const Modal = (props: Props) => {
         <Flex vertical gap={20}>
           <p>당신이 버는 금액을 입력해주세요</p>
           <Flex gap={10}>
-            <Select status={option ? "" : "error"} options={SELECT_OPTION} placeholder='선택' onChange={onChangeOption} />
+            <Select status={option ? "" : "error"} options={SELECT_OPTION} value={option} placeholder='선택' onChange={onChangeOption} />
             <InputNumber<number>
               style={{
                 width: "200px",
               }}
               status={wage ? "" : "error"}
+              value={wage}
               formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               parser={(value) => value?.replace(/\$\s?|(,*)/g, "") as unknown as number}
               onChange={onChangeWage}

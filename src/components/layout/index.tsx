@@ -28,16 +28,24 @@ const Layout = (props: Props) => {
     if (!info) setIsModalOpen(true);
   }, [info]);
 
+  const handleOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <_Layout>
-        <Header />
+        <Header handleOpen={handleOpen} />
         <_Layout style={{backgroundColor: "white"}}>
           <Content>{children}</Content>
         </_Layout>
         <Footer />
       </_Layout>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <Modal isModalOpen={isModalOpen} handleClose={handleClose} />
     </>
   );
 };

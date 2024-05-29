@@ -11,6 +11,7 @@
     "postinstall": "yarn husky init && echo 'yarn lint' > .husky/pre-commit"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
     "@sentry/nextjs": "^8",
     "antd": "^5.17.4",
     "next": "14.2.3",

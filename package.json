@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "postinstall": "yarn husky init && echo 'yarn lint' > .husky/pre-commit"
   },
   "dependencies": {
     "next": "14.2.3",
@@ -20,6 +22,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "husky": "^9.0.11",
     "typescript": "^5"
   }
 }

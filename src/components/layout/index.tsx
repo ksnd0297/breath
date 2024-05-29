@@ -1,4 +1,4 @@
-import {Layout as _Layout} from "antd";
+import {Divider, Layout as _Layout} from "antd";
 import {Content} from "antd/es/layout/layout";
 
 import {ReactNode, useEffect, useState} from "react";
@@ -38,9 +38,10 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <_Layout>
+      <_Layout style={{backgroundColor: "white", width: "100%", height: "100%"}}>
         <Header handleOpen={handleOpen} />
-        <_Layout style={{backgroundColor: "white"}}>
+        <Divider style={{margin: 10}} />
+        <_Layout style={{backgroundColor: "white", width: "100%", height: "100%"}}>
           <Content>{children}</Content>
         </_Layout>
         <Footer />

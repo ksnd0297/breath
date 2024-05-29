@@ -1,6 +1,7 @@
 import {SELECT_OPTION} from "@/constant/layout";
 import {getItem, setItem} from "@/utils/localStorage";
 import {Divider, Flex, InputNumber, Select, Modal as _Modal} from "antd";
+import {useRouter} from "next/router";
 import {useState} from "react";
 
 interface Props {
@@ -13,8 +14,14 @@ export interface Info {
   wage: number;
 }
 
+export interface Time {
+  time: string;
+}
+
 const Modal = (props: Props) => {
   const {isModalOpen, handleClose} = props;
+
+  const router = useRouter();
 
   const info = getItem<Info>("info");
 
@@ -31,8 +38,11 @@ const Modal = (props: Props) => {
 
   const onOk = () => {
     setItem("info", {option, wage});
+    setItem("time", {time: new Date()});
 
     handleClose();
+
+    router.reload();
   };
 
   const isDisabled = !option || !wage;

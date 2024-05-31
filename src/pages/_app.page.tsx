@@ -7,40 +7,44 @@ import {useState} from "react";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {StyleProvider} from "@ant-design/cssinjs";
 import {ConfigProvider} from "antd";
+import Script from "next/script";
 
 export default function App({Component, pageProps}: AppProps) {
     const [queryClient] = useState(() => new QueryClient());
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <Head>
-                <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no' />
-                <title>{metadata.title}</title>
-                <link rel='icon' href='/favicon.ico' sizes='any' />
-                <meta name='description' content={metadata.description} />
-                <meta property='og:type' content={metadata.openGraph.type} />
-                <meta property='og:title' content={metadata.openGraph.title} />
-                <meta property='og:description' content={metadata.openGraph.description} />
-                <meta property='og:url' content={metadata.openGraph.url} />
-                <meta property='og:locale' content={metadata.openGraph.locale} />
-                <meta property='og:image' content={metadata.openGraph.image} />
-                <meta name="google-site-verification" content="AUklnJUnORXler3c24O0MbTU1SUNtPkyw0bEsN_R4Bc" />
-            </Head>
-            <StyleProvider layer>
-                <ConfigProvider
-                    theme={{
-                        token: {
-                            fontFamily: "MangoDdobak-R, sans-serif",
-                        },
-                    }}
-                >
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
-                </ConfigProvider>
-            </StyleProvider>
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <>
+            <QueryClientProvider client={queryClient}>
+                <Head>
+                    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no' />
+                    <title>{metadata.title}</title>
+                    <link rel='icon' href='/favicon.ico' sizes='any' />
+                    <meta name='description' content={metadata.description} />
+                    <meta property='og:type' content={metadata.openGraph.type} />
+                    <meta property='og:title' content={metadata.openGraph.title} />
+                    <meta property='og:description' content={metadata.openGraph.description} />
+                    <meta property='og:url' content={metadata.openGraph.url} />
+                    <meta property='og:locale' content={metadata.openGraph.locale} />
+                    <meta property='og:image' content={metadata.openGraph.image} />
+                    <meta name="google-site-verification" content="AUklnJUnORXler3c24O0MbTU1SUNtPkyw0bEsN_R4Bc" />
+                </Head>
+                <StyleProvider layer>
+                    <ConfigProvider
+                        theme={{
+                            token: {
+                                fontFamily: "MangoDdobak-R, sans-serif",
+                            },
+                        }}
+                    >
+                        <Layout>
+                            <Component {...pageProps} />
+                        </Layout>
+                    </ConfigProvider>
+                </StyleProvider>
+                <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+            <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225" crossOrigin="anonymous" />
+        </>
     );
 }
 

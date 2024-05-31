@@ -28,7 +28,8 @@ const Foreign = (props: Props) => {
 
   if (isFetching) {
     return (
-      <Flex className='h-90 p-5' vertical gap={10} justify='center'>
+      <Flex className='h-90 p-5' vertical gap={20} justify='center'>
+        <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
         <LoadingOutlined className='text-2xl' />
       </Flex>
     );

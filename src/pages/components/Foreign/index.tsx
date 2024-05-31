@@ -1,12 +1,7 @@
-import {ForeignInfo, ForeignResponse} from "@/pages/api/type";
-import {chunks} from "@/utils/array";
-import {getItem} from "@/utils/localStorage";
-import {getKoreanPostPosition} from "@/utils/string";
+import {ForeignResponse} from "@/pages/api/type";
 import {LoadingOutlined} from "@ant-design/icons";
 import {useQuery} from "@tanstack/react-query";
-import {Col, Divider, Flex, Popconfirm, Popover, Row} from "antd";
-import Image from "next/image";
-import {useEffect, useState} from "react";
+import {Flex, Row} from "antd";
 import Info from "./components/Info";
 
 interface Props {
@@ -27,12 +22,7 @@ const Foreign = (props: Props) => {
   });
 
   if (isFetching) {
-    return (
-      <Flex className='h-90 p-5' vertical gap={20} justify='center'>
-        <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
-        <LoadingOutlined className='text-2xl' />
-      </Flex>
-    );
+    return <Loading />;
   }
 
   return (
@@ -48,3 +38,10 @@ const Foreign = (props: Props) => {
 };
 
 export default Foreign;
+
+export const Loading = () => (
+  <Flex className='h-90 p-5' vertical gap={20} justify='center'>
+    <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
+    <LoadingOutlined className='text-2xl' />
+  </Flex>
+);

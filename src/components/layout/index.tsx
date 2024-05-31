@@ -40,7 +40,7 @@ const Layout = (props: Props) => {
     <>
       <_Layout className='bg-sky-50'>
         <Header handleOpen={handleOpen} />
-        <Divider />
+        <Divider className='my-4 mt-0' />
         <_Layout className='bg-sky-50'>
           <Content>{children}</Content>
         </_Layout>

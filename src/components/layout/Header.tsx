@@ -1,5 +1,5 @@
 import {UserOutlined} from "@ant-design/icons";
-import {Divider, Flex, Typography} from "antd";
+import {Flex} from "antd";
 import {Header as _Header} from "antd/es/layout/layout";
 import Title from "antd/es/typography/Title";
 
@@ -12,7 +12,7 @@ const Header = (props: Props) => {
 
   return (
     <>
-      <_Header className='px-2.5 py-5 bg-sky-50'>
+      <_Header className='px-2.5 bg-sky-50 h-20'>
         <Flex justify='space-between' align='center' className='w-full h-full'>
           <Title level={3} className='m-0'>
             숨만 쉬며 얼마 벌었을까?

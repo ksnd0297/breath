@@ -38,7 +38,7 @@ const Info = (props: Props) => {
     <Col span={12}>
       <Popover title={title} content={content} placement='topLeft'>
         <Flex gap={10}>
-          <Image src={url} alt={cur_nm ?? ""} width={18} height={18} style={{width: 18, height: 18}} />
+          <Image src={url} alt={cur_nm ?? ""} width={18} height={18} style={{width: 18, height: 18}} loading='eager' />
           <p className='font-bold'>{cur_nm}</p>
         </Flex>
       </Popover>

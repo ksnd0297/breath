@@ -11,7 +11,7 @@ const Header = (props: Props) => {
 
   return (
     <>
-      <_Header className='px-2.5 py-5 bg-white'>
+      <_Header className='px-2.5 py-5 bg-sky-50'>
         <Flex justify='flex-end' className='w-full h-full'>
           <UserOutlined className='text-2xl' onClick={handleOpen} />
         </Flex>

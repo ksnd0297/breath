@@ -14,7 +14,7 @@ const Info = (props: Props) => {
 
   const {cur_unit, cur_nm, deal_bas_r} = data;
 
-  const url = `/flag/${cur_unit}.svg`;
+  const url = `${process.env.NEXT_PUBLIC_FLAG_SVG_HOST}/flag/${cur_unit}.svg`;
 
   const title = `${cur_nm}${getKoreanPostPosition(cur_nm ?? "")} 총 얼마 벌었을까 ?`;
 

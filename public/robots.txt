@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://breath-joy.vercel.app/
+Host: https://justbreathingincome.vercel.app/
 
 # Sitemaps
-Sitemap: https://breath-joy.vercel.app/sitemap.xml
+Sitemap: https://justbreathingincome.vercel.app/sitemap.xml

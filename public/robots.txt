@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://breath-joy.vercel.app/
+
+# Sitemaps
+Sitemap: https://breath-joy.vercel.app/sitemap.xml

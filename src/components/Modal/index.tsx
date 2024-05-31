@@ -3,6 +3,7 @@ import {getItem, setItem} from "@/utils/localStorage";
 import {Divider, Flex, InputNumber, Select, Modal as _Modal} from "antd";
 import {useRouter} from "next/router";
 import {useState} from "react";
+import Content from "./components/Content";
 
 interface Props {
   isModalOpen: boolean;
@@ -53,35 +54,29 @@ const Modal = (props: Props) => {
         title='하우 머치?'
         centered
         okText='저장'
+        cancelText='취소'
         open={isModalOpen}
         closable={false}
         okButtonProps={{
           disabled: isDisabled,
         }}
+        onCancel={info && handleClose}
         onOk={onOk}
-        footer={(_, {OkBtn}) => (
-          <Flex justify='center'>
-            <OkBtn />
+        footer={(_, {OkBtn, CancelBtn}) => (
+          <Flex justify='center' gap={10}>
+            {info ? (
+              <>
+                <CancelBtn />
+                <OkBtn />
+              </>
+            ) : (
+              <OkBtn />
+            )}
           </Flex>
         )}
       >
         <Divider />
-        <Flex vertical gap={20}>
-          <p>당신이 버는 금액을 입력해주세요</p>
-          <Flex gap={10}>
-            <Select status={option ? "" : "error"} options={SELECT_OPTION} value={option} placeholder='선택' onChange={onChangeOption} />
-            <InputNumber<number>
-              style={{
-                width: "200px",
-              }}
-              status={wage ? "" : "error"}
-              value={wage}
-              formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              parser={(value) => value?.replace(/\$\s?|(,*)/g, "") as unknown as number}
-              onChange={onChangeWage}
-            />
-          </Flex>
-        </Flex>
+        <Content option={option} wage={wage} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} />
         <Divider />
       </_Modal>
     </>

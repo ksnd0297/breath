@@ -1,5 +1,8 @@
-import {Info, Time} from "@/components/Modal";
+import {Info, Name, Time} from "@/components/Modal";
+import {SELECT_OPTION_ENUM} from "@/constant/layout";
+import {SELECT_HOUR_TO_SEC} from "@/constant/time";
 import {getItem} from "@/utils/localStorage";
+import {LoadingOutlined} from "@ant-design/icons";
 import {Divider, Flex} from "antd";
 import {Dispatch, SetStateAction, useEffect, useState} from "react";
 
@@ -15,9 +18,10 @@ const Money = (props: Props) => {
 
   const info = getItem<Info>("info");
   const time = getItem<Time>("time");
+  const name = getItem<Name>("name");
 
   useEffect(() => {
-    if (!time || !info) return;
+    if (!time) return;
 
     const elapsedMSec = new Date().getTime() - new Date(time.time).getTime();
 
@@ -26,9 +30,7 @@ const Money = (props: Props) => {
 
     // 4초 당 1번 호흡
     setCount(Math.round(elapsedSec / 4));
-  }, [time, info]);
 
-  useEffect(() => {
     const interval = setInterval(() => {
       setCount((prev: number) => prev + 1);
     }, 4000);
@@ -36,7 +38,7 @@ const Money = (props: Props) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [time]);
 
   useEffect(() => {
     if (!info) return;
@@ -44,23 +46,24 @@ const Money = (props: Props) => {
 
     const elapsedSec = count * 4;
     let wagePerSec = 0;
-
-    if (option === "daily") {
-      wagePerSec = Math.round(wage / 86400);
-    } else if (option === "weekly") {
-      wagePerSec = Math.round(wage / 604800);
-    } else if (option === "monthly") {
-      wagePerSec = Math.round(wage / 2.628e6);
-    } else if (option === "yearly") {
-      wagePerSec = Math.round(wage / 3.154e7);
+    if (option === SELECT_OPTION_ENUM.HOURLY) {
+      wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.HOURLY]);
+    } else if (option === SELECT_OPTION_ENUM.DAILY) {
+      wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.DAILY]);
+    } else if (option === SELECT_OPTION_ENUM.WEEKLY) {
+      wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.WEEKLY]);
+    } else if (option === SELECT_OPTION_ENUM.MONTHLY) {
+      wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.MONTHLY]);
+    } else if (option === SELECT_OPTION_ENUM.YEARLY) {
+      wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.YEARLY]);
     }
 
     setMoney(elapsedSec * wagePerSec);
   }, [count]);
 
   return (
-    <Flex className='h-60 p-5' vertical gap={20} justify='center'>
-      <p className='text-2xl font-bold'>숨만쉬며 번 돈</p>
+    <Flex className='h-48 p-5' vertical gap={20} justify='center'>
+      <p className='text-2xl font-bold'>{`${name?.name ? `${name?.name} 님이` : ""}`} 숨만쉬며 번 돈</p>
       <p className='text-base'>
         당신은 지금까지 <span className='text-xl font-bold'>{count}</span> 번 숨을 쉬었으며
       </p>
@@ -72,3 +75,10 @@ const Money = (props: Props) => {
 };
 
 export default Money;
+
+export const Loading = () => (
+  <Flex className='h-6t0 p-5' vertical gap={20} justify='center'>
+    <p className='text-2xl font-bold'>숨만쉬며 번 돈</p>
+    <LoadingOutlined className='text-2xl' />
+  </Flex>
+);

@@ -1,7 +1,13 @@
 import {Divider} from "antd";
 import Foreign from "./components/Foreign";
-import Money from "./components/Money";
 import {useState} from "react";
+import dynamic from "next/dynamic";
+import {Loading} from "./components/Money";
+
+const Money = dynamic(() => import("./components/Money"), {
+  ssr: false,
+  loading: () => <Loading />,
+});
 
 export default function Home() {
   const [count, setCount] = useState(0);

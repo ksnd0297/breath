@@ -53,38 +53,13 @@ const Money = () => {
   }, [count]);
 
   return (
-    <Flex style={{height: 200, padding: 20}} vertical gap={10} justify='center'>
-      <p style={{fontSize: 24, fontWeight: "bold"}}>숨만쉬며 번 돈</p>
-      <p
-        style={{
-          fontSize: 15,
-        }}
-      >
-        당신은 지금까지{" "}
-        <span
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-          }}
-        >
-          {count}
-        </span>{" "}
-        번 숨을 쉬었으며
+    <Flex className='h-60 p-5' vertical gap={10} justify='center'>
+      <p className='text-2xl font-bold'>숨만쉬며 번 돈</p>
+      <p className='text-base'>
+        당신은 지금까지 <span className='text-xl font-bold'>{count}</span> 번 숨을 쉬었으며
       </p>
-      <p
-        style={{
-          fontSize: 15,
-        }}
-      >
-        <span
-          style={{
-            fontSize: 20,
-            fontWeight: "bold",
-          }}
-        >
-          {money.toLocaleString()}
-        </span>{" "}
-        원을 벌었습니다.
+      <p className='text-base'>
+        <span className='text-2xl font-bold'>{money.toLocaleString()}</span> 원을 벌었습니다.
       </p>
     </Flex>
   );

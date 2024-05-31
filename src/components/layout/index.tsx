@@ -38,10 +38,10 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <_Layout style={{backgroundColor: "white", width: "100%", height: "100%"}}>
+      <_Layout className='bg-white w-full h-full'>
         <Header handleOpen={handleOpen} />
-        <Divider style={{margin: 10}} />
-        <_Layout style={{backgroundColor: "white", width: "100%", height: "100%"}}>
+        <Divider />
+        <_Layout className='bg-white w-full h-full'>
           <Content>{children}</Content>
         </_Layout>
         <Footer />

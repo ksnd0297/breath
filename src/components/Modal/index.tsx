@@ -55,8 +55,8 @@ const Modal = (props: Props) => {
         centered
         okText='저장'
         cancelText='취소'
-        open={isModalOpen}
         closable={false}
+        open={isModalOpen}
         okButtonProps={{
           disabled: isDisabled,
         }}

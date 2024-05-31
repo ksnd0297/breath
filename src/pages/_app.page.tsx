@@ -43,6 +43,6 @@ const metadata = {
     description: "벌이를 입력하고 숨만 쉬며 얼마 버는지 체크하세요!",
     url: "https://breath-joy.vercel.app/",
     locale: "ko-KR",
-    image: `${process.env.NEXT_PUBLIC_BLOB_HOST}/ogImage/ogImage.jpg`,
+    image: `${process.env.NEXT_PUBLIC_BLOB_READ_WRITE_TOKEN}/ogImage/ogImage.jpg`,
   },
 };

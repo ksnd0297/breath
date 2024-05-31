@@ -38,10 +38,10 @@ const Layout = (props: Props) => {
 
   return (
     <>
-      <_Layout className='bg-sky-50 w-full h-full'>
+      <_Layout className='bg-sky-50'>
         <Header handleOpen={handleOpen} />
         <Divider />
-        <_Layout className='bg-sky-50 w-full h-full'>
+        <_Layout className='bg-sky-50'>
           <Content>{children}</Content>
         </_Layout>
         <Footer />

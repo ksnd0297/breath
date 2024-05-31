@@ -24,6 +24,7 @@ export default function App({Component, pageProps}: AppProps) {
                 <meta property='og:url' content={metadata.openGraph.url} />
                 <meta property='og:locale' content={metadata.openGraph.locale} />
                 <meta property='og:image' content={metadata.openGraph.image} />
+                <meta name="google-site-verification" content="AUklnJUnORXler3c24O0MbTU1SUNtPkyw0bEsN_R4Bc" />
             </Head>
             <StyleProvider layer>
                 <ConfigProvider

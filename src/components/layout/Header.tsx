@@ -11,25 +11,9 @@ const Header = (props: Props) => {
 
   return (
     <>
-      <_Header
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "white",
-        }}
-      >
-        <Flex
-          justify='flex-end'
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <UserOutlined
-            style={{
-              fontSize: "24px",
-            }}
-            onClick={handleOpen}
-          />
+      <_Header className='px-2.5 py-5 bg-sky-50'>
+        <Flex justify='flex-end' className='w-full h-full'>
+          <UserOutlined className='text-2xl' onClick={handleOpen} />
         </Flex>
       </_Header>
     </>

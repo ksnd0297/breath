@@ -5,43 +5,43 @@ import {Flex, Row} from "antd";
 import Info from "./components/Info";
 
 interface Props {
-  money: number;
+    money: number;
 }
 
 const Foreign = (props: Props) => {
-  const {money} = props;
+    const {money} = props;
 
-  const {data, isFetching} = useQuery<ForeignResponse>({
-    queryKey: ["Foregin"],
-    queryFn: () =>
-      fetch("api").then((res) => {
-        return res.json();
-      }),
-    staleTime: Infinity,
-    gcTime: Infinity,
-  });
+    const {data, isFetching} = useQuery<ForeignResponse>({
+        queryKey: ["Foregin"],
+        queryFn: () =>
+            fetch("api").then((res) => {
+                return res.json();
+            }),
+        staleTime: Infinity,
+        gcTime: Infinity,
+    });
 
-  if (isFetching) {
-    return <Loading />;
-  }
+    if (isFetching) {
+        return <Loading />;
+    }
 
-  return (
-    <Flex className='h-90 p-5' vertical gap={20} justify='center'>
-      <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
-      <Row gutter={[20, 20]}>
-        {data?.data.map((info, index) => (
-          <Info key={index} data={info} money={money} />
-        ))}
-      </Row>
-    </Flex>
-  );
+    return (
+        <Flex className='h-90 p-5' vertical gap={20} justify='center'>
+            <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
+            <Row gutter={[20, 20]}>
+                {data?.data.map((info, index) => (
+                    <Info key={index} data={info} money={money} />
+                ))}
+            </Row>
+        </Flex>
+    );
 };
 
 export default Foreign;
 
 export const Loading = () => (
-  <Flex className='h-90 p-5' vertical gap={20} justify='center'>
-    <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
-    <LoadingOutlined className='text-2xl' />
-  </Flex>
+    <Flex className='h-90 p-5' vertical gap={20} justify='center'>
+        <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
+        <LoadingOutlined className='text-2xl' />
+    </Flex>
 );

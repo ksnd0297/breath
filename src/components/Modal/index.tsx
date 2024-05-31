@@ -19,6 +19,10 @@ export interface Time {
   time: string;
 }
 
+export interface Name {
+  name: string;
+}
+
 const Modal = (props: Props) => {
   const {isModalOpen, handleClose} = props;
 
@@ -28,6 +32,7 @@ const Modal = (props: Props) => {
 
   const [option, setOption] = useState(info?.option);
   const [wage, setWage] = useState<number | null>(info?.wage || null);
+  const [name, setName] = useState("");
 
   const onChangeOption = (value: string) => {
     setOption(value);
@@ -37,16 +42,20 @@ const Modal = (props: Props) => {
     setWage(value);
   };
 
+  const onChangeName = (value: string) => {
+    setName(value);
+  };
+
   const onOk = () => {
     setItem("info", {option, wage});
     setItem("time", {time: new Date()});
+    setItem("name", {name});
 
     handleClose();
-
     router.reload();
   };
 
-  const isDisabled = !option || !wage;
+  const isDisabled = !option || !wage || !name;
 
   return (
     <>
@@ -76,7 +85,7 @@ const Modal = (props: Props) => {
         )}
       >
         <Divider />
-        <Content option={option} wage={wage} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} />
+        <Content option={option} wage={wage} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} handleChangeName={onChangeName} />
         <Divider />
       </_Modal>
     </>

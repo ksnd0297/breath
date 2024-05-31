@@ -1,10 +1,14 @@
 import {StyleProvider, createCache, extractStyle} from "@ant-design/cssinjs";
 import Document, {Html, Head, Main, NextScript, DocumentContext} from "next/document";
+import Script from "next/script";
 
 export default function MyDocument() {
     return (
         <Html lang='kr'>
-            <Head />
+            <Head>
+                <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225"
+                    crossOrigin="anonymous"></Script>
+            </Head>
             <body>
                 <Main />
                 <NextScript />

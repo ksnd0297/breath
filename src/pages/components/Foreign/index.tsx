@@ -17,7 +17,7 @@ const Foreign = (props: Props) => {
   const {money} = props;
 
   const {data, isFetching} = useQuery<ForeignResponse>({
-    queryKey: [],
+    queryKey: ["Foregin"],
     queryFn: () =>
       fetch("api").then((res) => {
         return res.json();
@@ -47,9 +47,3 @@ const Foreign = (props: Props) => {
 };
 
 export default Foreign;
-
-export const getServerSideProps = () => {
-  return {
-    props: {},
-  };
-};

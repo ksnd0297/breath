@@ -41,8 +41,8 @@ const metadata = {
     type: "website",
     title: "숨만 쉬며 얼마 벌었을까?",
     description: "벌이를 입력하고 숨만 쉬며 얼마 버는지 체크하세요!",
-    url: "https://breath-joy.vercel.app/",
+    url: "https://justbreathingincome.vercel.app/",
     locale: "ko-KR",
-    image: `${process.env.NEXT_PUBLIC_BLOB_HOST}/ogImage/ogImage.jpg`,
+    image: `${process.env.NEXT_PUBLIC_OG_IMAGE_HOST}/ogImage/ogImage.jpg`,
   },
 };

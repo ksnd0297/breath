@@ -8,6 +8,16 @@ export default function MyDocument() {
             <body>
                 <Main />
                 <NextScript />
+                {/* <!-- Google Tag Manager (noscript) --> */}
+                <noscript>
+                    <iframe
+                        src={`https://www.googletagmanager.com/ns.html?id=GTM-MML78Z93`}
+                        height="0"
+                        width="0"
+                        className="hidden invisible"
+                    ></iframe>
+                </noscript>
+                {/* <!-- End Google Tag Manager (noscript) --> */}
             </body>
         </Html>
     );

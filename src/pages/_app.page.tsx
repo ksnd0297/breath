@@ -6,6 +6,7 @@ import Head from "next/head";
 import {useState} from "react";
 import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {StyleProvider} from "@ant-design/cssinjs";
+import {ConfigProvider} from "antd";
 
 export default function App({Component, pageProps}: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -25,9 +26,17 @@ export default function App({Component, pageProps}: AppProps) {
         <meta property='og:image' content={metadata.openGraph.image} />
       </Head>
       <StyleProvider layer>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ConfigProvider
+          theme={{
+            token: {
+              fontFamily: "-apple-system, MangoDdobak-B, sans-serif",
+            },
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ConfigProvider>
       </StyleProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

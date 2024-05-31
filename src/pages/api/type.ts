@@ -12,7 +12,10 @@
  * kfrtc_bkpr : 서울외국환중개장부가격
  */
 export type ForeignResponse = {
-  data: {
+  data: ForeignInfo[]
+}
+
+export type ForeignInfo = {
   result?: number 
   cur_unit?: string
   cur_nm?: string
@@ -24,5 +27,4 @@ export type ForeignResponse = {
   ten_dd_efee_r?: string
   kftc_deal_bas_r?: string
   kftc_bkpr?: string
-  }[]
-}
+} 

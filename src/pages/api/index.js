@@ -1,7 +1,8 @@
 import fetch from "node-fetch";
 import {format, subDays} from "date-fns";
+import {wrapApiHandlerWithSentry} from "@sentry/nextjs";
 
-export default async function handler(request, response) {
+async function handler(request, response) {
   const yesterDay = format(subDays(new Date(), 1), "yyyyMMdd");
 
   const res = await fetch(`https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=lKvuroHtj4Fh2aq842GxUW57gUmErxNj&data=AP01&searchdate=${yesterDay}`);
@@ -10,3 +11,5 @@ export default async function handler(request, response) {
     data,
   });
 }
+
+export default wrapApiHandlerWithSentry(handler, "/api");

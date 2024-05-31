@@ -4,7 +4,9 @@ import Document, {Html, Head, Main, NextScript, DocumentContext} from "next/docu
 export default function MyDocument() {
     return (
         <Html lang='kr'>
-            <Head />
+            <Head>
+                <script  async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225" crossOrigin="anonymous"></script>
+            </Head>
             <body>
                 <Main />
                 <NextScript />

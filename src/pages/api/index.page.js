@@ -5,11 +5,21 @@ import {wrapApiHandlerWithSentry} from "@sentry/nextjs";
 async function handler(request, response) {
   const yesterDay = format(subDays(new Date(), 1), "yyyyMMdd");
 
-  const res = await fetch(`https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=lKvuroHtj4Fh2aq842GxUW57gUmErxNj&data=AP01&searchdate=${yesterDay}`);
-  const data = await res.json();
-  return response.status(200).json({
-    data,
+  const res = await fetch(`https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.NEXT_PUBLIC_FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${yesterDay}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
   });
+  const data = await res.json();
+  try {
+    return response.status(200).json({
+      data,
+    });
+  } catch (e) {
+    return response.status(500).json({error: error});
+  }
 }
 
 export default wrapApiHandlerWithSentry(handler, "/api");

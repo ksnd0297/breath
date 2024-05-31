@@ -1,4 +1,6 @@
 export function getKoreanPostPosition(word: string) {
+  if(!word) return '은';
+  
   // 유니코드에서 한글의 시작과 끝 범위
   const HANGUL_START = 0xAC00;
   const HANGUL_END = 0xD7A3;

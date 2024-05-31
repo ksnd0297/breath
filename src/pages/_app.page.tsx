@@ -14,6 +14,15 @@ export default function App({Component, pageProps}: AppProps) {
     <QueryClientProvider client={queryClient}>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no' />
+        <title>{metadata.title}</title>
+        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <meta name='description' content={metadata.description} />
+        <meta property='og:type' content={metadata.openGraph.type} />
+        <meta property='og:title' content={metadata.openGraph.title} />
+        <meta property='og:description' content={metadata.openGraph.description} />
+        <meta property='og:url' content={metadata.openGraph.url} />
+        <meta property='og:locale' content={metadata.openGraph.locale} />
+        <meta property='og:image' content={metadata.openGraph.image} />
       </Head>
       <StyleProvider layer>
         <Layout>
@@ -24,3 +33,16 @@ export default function App({Component, pageProps}: AppProps) {
     </QueryClientProvider>
   );
 }
+
+const metadata = {
+  title: "숨만 쉬며 얼마 벌었을까?",
+  description: "벌이를 입력하고 숨만 쉬며 얼마 버는지 체크하세요!",
+  openGraph: {
+    type: "website",
+    title: "숨만 쉬며 얼마 벌었을까?",
+    description: "벌이를 입력하고 숨만 쉬며 얼마 버는지 체크하세요!",
+    url: "https://breath-joy.vercel.app/",
+    locale: "ko-KR",
+    image: `${process.env.NEXT_PUBLIC_BLOB_HOST}/ogImage/ogImage.jpg`,
+  },
+};

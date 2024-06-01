@@ -24,6 +24,6 @@ body,
 
 @font-face {
   font-family: 'font-family';
-  src: url('../../public/fonts/온글잎\ 주리손편지.ttf') format('truetype');
+  src: url('../../public/fonts/handLetter.ttf') format('truetype');
   font-weight: normal;
 }

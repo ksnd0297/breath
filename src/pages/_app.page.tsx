@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <ConfigProvider
                         theme={{
                             token: {
-                                fontFamily: "TAEBAEKmilkyway, sans-serif",
+                                fontFamily: "font-family, sans-serif",
                             },
                         }}
                     >

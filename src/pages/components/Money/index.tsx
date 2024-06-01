@@ -1,9 +1,9 @@
+import ContentWrapper from "@/components/ContentWrapper";
 import {Info, Name, Time} from "@/components/Modal";
 import {SELECT_OPTION_ENUM} from "@/constant/layout";
 import {SELECT_HOUR_TO_SEC} from "@/constant/time";
 import {getItem} from "@/utils/localStorage";
 import {LoadingOutlined} from "@ant-design/icons";
-import { Flex} from "antd";
 import {Dispatch, SetStateAction, useEffect} from "react";
 
 interface Props {
@@ -65,23 +65,21 @@ const Money = (props: Props) => {
     }, [count]);
 
     return (
-        <Flex className='h-48 p-5' vertical gap={20} justify='center'>
-            <p className='text-xl font-bold'>{`${name?.name ? `${name?.name} 님이` : ""}`} 숨만쉬며 번 돈</p>
+        <ContentWrapper title={`${name?.name ? `${name?.name} 님이` : ""} 숨만쉬며 번 돈`}> 
             <p>
-        당신은 지금까지 <span className='font-bold'>{count}</span> 번 숨을 쉬었으며
+                당신은 지금까지 <span className='font-bold'>{count}</span> 번 숨을 쉬었으며
             </p>
             <p>
                 <span className='font-bold'>{money.toLocaleString()}</span> 원을 벌었어요
             </p>
-        </Flex>
+        </ContentWrapper>
     );
 };
 
 export default Money;
 
 export const Loading = () => (
-    <Flex className='h-6t0 p-5' vertical gap={20} justify='center'>
-        <p className='text-xl font-bold'>숨만쉬며 번 돈</p>
+    <ContentWrapper title="숨만쉬며 번 돈">
         <LoadingOutlined className='text-xl' />
-    </Flex>
+    </ContentWrapper>
 );

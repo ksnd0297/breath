@@ -23,8 +23,7 @@ body,
 }
 
 @font-face {
-  font-family: 'TAEBAEKmilkyway';
-  src: url('../../public/fonts/TAEBAEK milkyway.ttf') format('truetype');
+  font-family: 'font-family';
+  src: url('../../public/fonts/온글잎\ 주리손편지.ttf') format('truetype');
   font-weight: normal;
-  font-style: normal;
 }

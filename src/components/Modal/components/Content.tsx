@@ -14,9 +14,9 @@ const Content = (props: Props) => {
     const {option, wage, name, handleChangeName, handleChangeOption, handleChangeWage} = props;
 
     return (
-        <Flex vertical gap={20}>
-            <p>당신이 버는 금액을 입력해주세요</p>
-            <Flex gap={10} vertical>
+        <Flex vertical gap={30}>
+            <p className="font-bold">당신이 버는 금액을 입력해주세요</p>
+            <Flex gap={20} vertical>
                 <Flex gap={10}>
                     <Select status={option ? "" : "error"} options={SELECT_OPTION} value={option} placeholder='선택' onChange={handleChangeOption} />
                     <InputNumber<number>

@@ -41,7 +41,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <ConfigProvider
                         theme={{
                             token: {
-                                fontFamily: "MangoDdobak-R, sans-serif",
+                                fontFamily: "TAEBAEKmilkyway, sans-serif",
                             },
                         }}
                     >
@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         </Layout>
                     </ConfigProvider>
                 </StyleProvider>
-                <ReactQueryDevtools initialIsOpen={false} />
+                <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left"  />
             </QueryClientProvider>
         </>
     );

@@ -27,7 +27,7 @@ const Foreign = (props: Props) => {
 
     return (
         <Flex className='h-90 p-5' vertical gap={20} justify='center'>
-            <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
+            <p className='text-xl font-bold'>외화는 얼마나 벌었을까 ?</p>
             <Row gutter={[20, 20]}>
                 {data?.data.map((info, index) => (
                     <Info key={index} data={info} money={money} />
@@ -41,7 +41,7 @@ export default Foreign;
 
 export const Loading = () => (
     <Flex className='h-90 p-5' vertical gap={20} justify='center'>
-        <p className='text-2xl font-bold'>외화는 얼마나 벌었을까 ?</p>
-        <LoadingOutlined className='text-2xl' />
+        <p className='text-xl font-bold'>외화는 얼마나 벌었을까 ?</p>
+        <LoadingOutlined className='text-xl' />
     </Flex>
 );

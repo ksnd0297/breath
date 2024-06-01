@@ -66,12 +66,12 @@ const Money = (props: Props) => {
 
     return (
         <Flex className='h-48 p-5' vertical gap={20} justify='center'>
-            <p className='text-2xl font-bold'>{`${name?.name ? `${name?.name} 님이` : ""}`} 숨만쉬며 번 돈</p>
-            <p className='text-base'>
-        당신은 지금까지 <span className='text-xl font-bold'>{count}</span> 번 숨을 쉬었으며
+            <p className='text-xl font-bold'>{`${name?.name ? `${name?.name} 님이` : ""}`} 숨만쉬며 번 돈</p>
+            <p>
+        당신은 지금까지 <span className='font-bold'>{count}</span> 번 숨을 쉬었으며
             </p>
-            <p className='text-base'>
-                <span className='text-2xl font-bold'>{money.toLocaleString()}</span> 원을 벌었어요
+            <p>
+                <span className='font-bold'>{money.toLocaleString()}</span> 원을 벌었어요
             </p>
         </Flex>
     );
@@ -81,7 +81,7 @@ export default Money;
 
 export const Loading = () => (
     <Flex className='h-6t0 p-5' vertical gap={20} justify='center'>
-        <p className='text-2xl font-bold'>숨만쉬며 번 돈</p>
-        <LoadingOutlined className='text-2xl' />
+        <p className='text-xl font-bold'>숨만쉬며 번 돈</p>
+        <LoadingOutlined className='text-xl' />
     </Flex>
 );

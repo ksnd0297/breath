@@ -18,7 +18,7 @@ const Content = (props: Props) => {
             <p className="font-bold">당신이 버는 금액을 입력해주세요</p>
             <Flex gap={20} vertical>
                 <Flex gap={10}>
-                    <Select status={option ? "" : "error"} options={SELECT_OPTION} value={option} placeholder='선택' onChange={handleChangeOption} />
+                    <Select style={{fontWeight : 'bold'}} status={option ? "" : "error"} options={SELECT_OPTION} value={option} placeholder='선택' onChange={handleChangeOption} />
                     <InputNumber<number>
                         className='w-52'
                         status={wage ? "" : "error"}

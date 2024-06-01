@@ -3,6 +3,7 @@ import {Divider, Flex, Modal as _Modal} from "antd";
 import {useRouter} from "next/router";
 import {useState} from "react";
 import Content from "./components/Content";
+import Notice from "./components/Notice";
 
 interface Props {
     isModalOpen: boolean;
@@ -88,6 +89,7 @@ const Modal = (props: Props) => {
                 <Divider />
                 <Content option={option} wage={wage} name={name} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} handleChangeName={onChangeName} />
                 <Divider />
+                <Notice />
             </_Modal>
         </>
     );

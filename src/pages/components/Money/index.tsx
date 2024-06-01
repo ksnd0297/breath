@@ -44,21 +44,24 @@ const Money = (props: Props) => {
         if (!info) return;
         const {option, wage} = info;
 
+        
+
         const elapsedSec = count * 4;
         let wagePerSec = 0;
         if (option === SELECT_OPTION_ENUM.HOURLY) {
-            wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.HOURLY]);
+            wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.HOURLY];
         } else if (option === SELECT_OPTION_ENUM.DAILY) {
-            wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.DAILY]);
+            wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.DAILY];
         } else if (option === SELECT_OPTION_ENUM.WEEKLY) {
-            wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.WEEKLY]);
+            wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.WEEKLY];
         } else if (option === SELECT_OPTION_ENUM.MONTHLY) {
-            wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.MONTHLY]);
+            wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.MONTHLY];
         } else if (option === SELECT_OPTION_ENUM.YEARLY) {
-            wagePerSec = Math.round(wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.YEARLY]);
+            wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.YEARLY];
         }
 
-        setMoney(elapsedSec * wagePerSec);
+
+        setMoney(elapsedSec * +wagePerSec.toFixed(2));
     }, [count]);
 
     return (

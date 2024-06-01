@@ -28,10 +28,11 @@ const Modal = (props: Props) => {
     const router = useRouter();
 
     const info = getItem<Info>("info");
+    const defaultName = getItem<Name>("name");
 
     const [option, setOption] = useState(info?.option);
     const [wage, setWage] = useState<number | null>(info?.wage || null);
-    const [name, setName] = useState("");
+    const [name, setName] = useState(defaultName?.name || "");
 
     const onChangeOption = (value: string) => {
         setOption(value);
@@ -42,6 +43,7 @@ const Modal = (props: Props) => {
     };
 
     const onChangeName = (value: string) => {
+        console.log('value :',value)
         setName(value);
     };
 
@@ -84,7 +86,7 @@ const Modal = (props: Props) => {
                 )}
             >
                 <Divider />
-                <Content option={option} wage={wage} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} handleChangeName={onChangeName} />
+                <Content option={option} wage={wage} name={name} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} handleChangeName={onChangeName} />
                 <Divider />
             </_Modal>
         </>

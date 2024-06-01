@@ -3,6 +3,7 @@ import Foreign from "./components/Foreign";
 import {useState} from "react";
 import dynamic from "next/dynamic";
 import {Loading} from "./components/Money";
+import Work from "./components/Work";
 
 const Money = dynamic(() => import("./components/Money"), {
     ssr: false,
@@ -19,6 +20,7 @@ export default function Home() {
             <Divider />
             <Foreign money={money} />
             <Divider />
+            <Work count={count}/>
         </>
     );
 }

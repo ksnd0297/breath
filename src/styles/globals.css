@@ -24,7 +24,7 @@ body,
 
 @font-face {
   font-family: 'TAEBAEKmilkyway';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+  src: url('../../public/fonts/TAEBAEK milkyway.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

@@ -1,17 +1,17 @@
-import {format, subDays} from "date-fns";
+import {format} from "date-fns";
 import { wrapApiHandlerWithSentry} from "@sentry/nextjs";
 import https from "https";
 import {NextApiRequest, NextApiResponse} from "next";
 import fetch from "node-fetch";
 
 async function handler(req: NextApiRequest, response: NextApiResponse) {
-    const yesterDay = format(subDays(new Date(), 1), "yyyyMMdd");
+    const today = format(new Date(), "yyyy-MM-dd");
 
     const httpsAgent = new https.Agent({
         rejectUnauthorized: false,
     });
 
-    const res = await fetch(`https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${yesterDay}`, {
+    const res = await fetch(`https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${today}`, {
         method: "GET",
         headers: {
             Accept: "application/json",

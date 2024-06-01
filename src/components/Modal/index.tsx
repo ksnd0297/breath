@@ -61,6 +61,7 @@ const Modal = (props: Props) => {
         <>
             <_Modal
                 title='하우 머치?'
+                className="font-bold"
                 centered
                 okText='저장'
                 cancelText='취소'

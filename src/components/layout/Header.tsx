@@ -14,7 +14,7 @@ const Header = (props: Props) => {
         <>
             <_Header className='px-2.5 bg-sky-50 h-20'>
                 <Flex justify='space-between' align='center' className='w-full h-full'>
-                    <Title level={3} className='m-0'>
+                    <Title level={4} className='m-0'>
             숨만 쉬며 얼마 벌었을까?
                     </Title>
                     <UserOutlined className='text-2xl' onClick={handleOpen} />

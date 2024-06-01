@@ -61,7 +61,7 @@ const Money = (props: Props) => {
         }
 
 
-        setMoney(elapsedSec * +wagePerSec.toFixed(2));
+        setMoney(+(elapsedSec * wagePerSec).toFixed(2));
     }, [count]);
 
     return (

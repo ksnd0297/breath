@@ -43,7 +43,6 @@ const Modal = (props: Props) => {
     };
 
     const onChangeName = (value: string) => {
-        console.log('value :',value)
         setName(value);
     };
 

@@ -8,6 +8,7 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 import {StyleProvider} from "@ant-design/cssinjs";
 import {ConfigProvider} from "antd";
 import Script from "next/script";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function App({Component, pageProps}: AppProps) {
     const [queryClient] = useState(() => new QueryClient());
@@ -47,6 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     >
                         <Layout>
                             <Component {...pageProps} />
+                            <SpeedInsights />
                         </Layout>
                     </ConfigProvider>
                 </StyleProvider>

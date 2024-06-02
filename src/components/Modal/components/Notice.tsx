@@ -9,7 +9,7 @@ const Notice = () => {
                 <li>데이터를 모두 채우기 전에는 버튼이 활성화되지 않습니다.</li>
             </ul>
         </Flex>
-    )
-}
+    );
+};
 
 export default Notice;

@@ -8,15 +8,15 @@ interface Props {
 }
 
 const Work = (props: Props) => {
-    const {count} = props;
+    const { count } = props;
 
     const elapsedSec = count * 4;
 
     return (
         <ContentWrapper title="숨 쉬는동안 다른일을 했다면 ?">
             <Row justify="space-around" gutter={[16, 16]}>
-                {JOB_LIST.map((work, index) => (   
-                    <Job 
+                {JOB_LIST.map((work, index) => (
+                    <Job
                         key={index}
                         title={work.title}
                         sec={work.sec}
@@ -26,8 +26,7 @@ const Work = (props: Props) => {
                 ))}
             </Row>
         </ContentWrapper>
-    )
-}
+    );
+};
 
 export default Work;
-

@@ -1,7 +1,7 @@
-import {getItem, setItem} from "@/utils/localStorage";
-import {Divider, Flex, Modal as _Modal} from "antd";
-import {useRouter} from "next/router";
-import {useState} from "react";
+import { getItem, setItem } from "@/utils/localStorage";
+import { Divider, Flex, Modal as _Modal } from "antd";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import Content from "./components/Content";
 import Notice from "./components/Notice";
 
@@ -24,7 +24,7 @@ export interface Name {
 }
 
 const Modal = (props: Props) => {
-    const {isModalOpen, handleClose} = props;
+    const { isModalOpen, handleClose } = props;
 
     const router = useRouter();
 
@@ -48,9 +48,9 @@ const Modal = (props: Props) => {
     };
 
     const onOk = () => {
-        setItem("info", {option, wage});
-        setItem("time", {time: new Date()});
-        setItem("name", {name});
+        setItem("info", { option, wage });
+        setItem("time", { time: new Date() });
+        setItem("name", { name });
 
         handleClose();
         router.reload();
@@ -61,11 +61,11 @@ const Modal = (props: Props) => {
     return (
         <>
             <_Modal
-                title='하우 머치?'
+                title="하우 머치?"
                 className="font-bold"
                 centered
-                okText='저장'
-                cancelText='취소'
+                okText="저장"
+                cancelText="취소"
                 closable={false}
                 open={isModalOpen}
                 okButtonProps={{
@@ -73,8 +73,8 @@ const Modal = (props: Props) => {
                 }}
                 onCancel={info && handleClose}
                 onOk={onOk}
-                footer={(_, {OkBtn, CancelBtn}) => (
-                    <Flex justify='center' gap={10}>
+                footer={(_, { OkBtn, CancelBtn }) => (
+                    <Flex justify="center" gap={10}>
                         {info ? (
                             <>
                                 <CancelBtn />
@@ -87,7 +87,14 @@ const Modal = (props: Props) => {
                 )}
             >
                 <Divider />
-                <Content option={option} wage={wage} name={name} handleChangeOption={onChangeOption} handleChangeWage={onChangeWage} handleChangeName={onChangeName} />
+                <Content
+                    option={option}
+                    wage={wage}
+                    name={name}
+                    handleChangeOption={onChangeOption}
+                    handleChangeWage={onChangeWage}
+                    handleChangeName={onChangeName}
+                />
                 <Divider />
                 <Notice />
             </_Modal>

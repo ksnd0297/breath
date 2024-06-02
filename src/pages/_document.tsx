@@ -1,9 +1,15 @@
-import {StyleProvider, createCache, extractStyle} from "@ant-design/cssinjs";
-import Document, {Html, Head, Main, NextScript, DocumentContext} from "next/document";
+import { StyleProvider, createCache, extractStyle } from "@ant-design/cssinjs";
+import Document, {
+    Html,
+    Head,
+    Main,
+    NextScript,
+    DocumentContext,
+} from "next/document";
 
 export default function MyDocument() {
     return (
-        <Html lang='kr'>
+        <Html lang="kr">
             <Head>
                 <GoogleAds />
             </Head>
@@ -21,12 +27,11 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
     const originalRenderPage = ctx.renderPage;
     ctx.renderPage = () =>
         originalRenderPage({
-            enhanceApp: (App) => (props) =>
-                (
-                    <StyleProvider cache={cache}>
-                        <App {...props} />
-                    </StyleProvider>
-                ),
+            enhanceApp: (App) => (props) => (
+                <StyleProvider cache={cache}>
+                    <App {...props} />
+                </StyleProvider>
+            ),
         });
 
     const initialProps = await Document.getInitialProps(ctx);
@@ -36,7 +41,7 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
         styles: (
             <>
                 {initialProps.styles}
-                <style dangerouslySetInnerHTML={{__html: style}} />
+                <style dangerouslySetInnerHTML={{ __html: style }} />
             </>
         ),
     };
@@ -44,9 +49,13 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
 const GoogleAds = () => {
     return (
-        <script  async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225" crossOrigin="anonymous"></script>
-    )
-}
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225"
+            crossOrigin="anonymous"
+        ></script>
+    );
+};
 
 const GoogleTag = () => {
     return (
@@ -62,5 +71,5 @@ const GoogleTag = () => {
             </noscript>
             {/* <!-- End Google Tag Manager (noscript) --> */}
         </>
-    )
-}
+    );
+};

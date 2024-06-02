@@ -1,13 +1,13 @@
-import {Divider, Layout as _Layout} from "antd";
-import {Content} from "antd/es/layout/layout";
+import { Divider, Layout as _Layout } from "antd";
+import { Content } from "antd/es/layout/layout";
 
-import {ReactNode, useEffect, useState} from "react";
+import { ReactNode, useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 
 import dynamic from "next/dynamic";
-import {getItem} from "@/utils/localStorage";
-import {Info} from "../Modal";
+import { getItem } from "@/utils/localStorage";
+import { Info } from "../Modal";
 
 const Modal = dynamic(() => import("../Modal"), {
     ssr: false,
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const Layout = (props: Props) => {
-    const {children} = props;
+    const { children } = props;
 
     const info = getItem<Info>("info");
 
@@ -38,10 +38,10 @@ const Layout = (props: Props) => {
 
     return (
         <>
-            <_Layout className='bg-sky-50'>
+            <_Layout className="bg-sky-50">
                 <Header handleOpen={handleOpen} />
-                <Divider className='my-4 mt-0' />
-                <_Layout className='bg-sky-50'>
+                <Divider className="my-4 mt-0" />
+                <_Layout className="bg-sky-50">
                     <Content>{children}</Content>
                 </_Layout>
                 <Footer />

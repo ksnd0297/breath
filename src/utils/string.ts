@@ -1,9 +1,9 @@
 export function getKoreanPostPosition(word: string) {
-    if(!word) return '은';
-  
+    if (!word) return "은";
+
     // 유니코드에서 한글의 시작과 끝 범위
-    const HANGUL_START = 0xAC00;
-    const HANGUL_END = 0xD7A3;
+    const HANGUL_START = 0xac00;
+    const HANGUL_END = 0xd7a3;
 
     // 입력 단어의 마지막 글자를 추출
     const lastChar = word[word.length - 1];
@@ -18,8 +18,8 @@ export function getKoreanPostPosition(word: string) {
     const syllableIndex = lastCharCode - HANGUL_START;
 
     // 받침이 있는지 없는지 확인 (종성 계산)
-    const hasBatchim = (syllableIndex % 28) !== 0;
+    const hasBatchim = syllableIndex % 28 !== 0;
 
     // 알맞은 조사 반환
-    return hasBatchim ? '은' : '는';
+    return hasBatchim ? "은" : "는";
 }

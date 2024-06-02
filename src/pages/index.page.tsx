@@ -1,8 +1,8 @@
-import {Divider} from "antd";
+import { Divider } from "antd";
 import Foreign from "./components/Foreign";
-import {useState} from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
-import {Loading} from "./components/Money";
+import { Loading } from "./components/Money";
 import Work from "./components/Work";
 
 const Money = dynamic(() => import("./components/Money"), {
@@ -16,11 +16,16 @@ export default function Home() {
 
     return (
         <>
-            <Money money={money} setMoney={setMoney} count={count} setCount={setCount} />
+            <Money
+                money={money}
+                setMoney={setMoney}
+                count={count}
+                setCount={setCount}
+            />
             <Divider />
             <Foreign money={money} />
             <Divider />
-            <Work count={count}/>
+            <Work count={count} />
         </>
     );
 }

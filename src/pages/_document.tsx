@@ -5,21 +5,12 @@ export default function MyDocument() {
     return (
         <Html lang='kr'>
             <Head>
-                <script  async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225" crossOrigin="anonymous"></script>
+                <GoogleAds />
             </Head>
             <body>
                 <Main />
                 <NextScript />
-                {/* <!-- Google Tag Manager (noscript) --> */}
-                <noscript>
-                    <iframe
-                        src={`https://www.googletagmanager.com/ns.html?id=GTM-MML78Z93`}
-                        height="0"
-                        width="0"
-                        className="hidden invisible"
-                    ></iframe>
-                </noscript>
-                {/* <!-- End Google Tag Manager (noscript) --> */}
+                <GoogleTag />
             </body>
         </Html>
     );
@@ -50,3 +41,26 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
         ),
     };
 };
+
+const GoogleAds = () => {
+    return (
+        <script  async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3579472484776225" crossOrigin="anonymous"></script>
+    )
+}
+
+const GoogleTag = () => {
+    return (
+        <>
+            {/* <!-- Google Tag Manager (noscript) --> */}
+            <noscript>
+                <iframe
+                    src={`https://www.googletagmanager.com/ns.html?id=GTM-MML78Z93`}
+                    height="0"
+                    width="0"
+                    className="hidden invisible"
+                ></iframe>
+            </noscript>
+            {/* <!-- End Google Tag Manager (noscript) --> */}
+        </>
+    )
+}

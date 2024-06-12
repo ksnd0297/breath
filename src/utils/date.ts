@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 /**
  *
@@ -6,5 +6,5 @@ import { format } from "date-fns";
  * @returns date "yyyy-MM-dd"
  */
 export const formatDateWithoutTime = (date: Date | string | number) => {
-  return format(date, "yyyy-MM-dd");
+    return format(date, 'yyyy-MM-dd');
 };

@@ -1,28 +1,24 @@
-import { Flex, Typography } from "antd";
-import { ReactNode } from "react";
+import { Flex, Typography } from 'antd';
+import clsx from 'clsx';
+import { ReactNode } from 'react';
 
 interface Props {
-  children: ReactNode;
-  title?: ReactNode | string;
+    children: ReactNode;
+    height?: string;
+    padding?: string;
+    title?: ReactNode | string;
+    justify?: string;
 }
 
 const ContentWrapper = (props: Props) => {
-  const { children, title } = props;
+    const { children, height = 'h-90', padding = 'p-5', title, justify = 'center' } = props;
 
-  return (
-    <Flex className="h-90 p-5" vertical gap={20} justify="center">
-      {title ? (
-        typeof title === "object" ? (
-          title
-        ) : (
-          <Typography.Title level={4}>{title}</Typography.Title>
-        )
-      ) : (
-        <></>
-      )}
-      {children}
-    </Flex>
-  );
+    return (
+        <Flex className={clsx(height, padding)} vertical gap={20} justify={justify}>
+            {title ? typeof title === 'object' ? title : <Typography.Title level={4}>{title}</Typography.Title> : <></>}
+            {children}
+        </Flex>
+    );
 };
 
 export default ContentWrapper;

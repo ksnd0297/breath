@@ -16,6 +16,8 @@ const Work = (props: Props) => {
 
     return (
         <ContentWrapper
+            height="h-102"
+            justify="normal"
             title={
                 <Flex justify="space-between">
                     <p className="text-xl font-bold">숨 쉬는동안 다른일을 했다면 ?</p>

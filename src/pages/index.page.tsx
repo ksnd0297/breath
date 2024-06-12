@@ -1,4 +1,4 @@
-import { Divider } from 'antd';
+import { Divider, message } from 'antd';
 import dynamic from 'next/dynamic';
 import { Loading } from './components/Money';
 import { useRef, useState } from 'react';
@@ -24,7 +24,14 @@ export default function Home() {
     const syncMoney = useRef(0);
     const syncCount = useRef(0);
 
+    const [messageApi, contextHolder] = message.useMessage();
+
     const handleSync = () => {
+        messageApi.open({
+            type: 'success',
+            content: '갱신 완료',
+        });
+
         setTick(prev => prev + 1);
     };
 
@@ -38,6 +45,7 @@ export default function Home() {
 
     return (
         <>
+            {contextHolder}
             <Money handleSyncMoney={handleSyncMoney} handleSyncCount={handleSyncCount} />
             <Divider />
             <Foreign money={syncMoney.current} handleSync={handleSync} />

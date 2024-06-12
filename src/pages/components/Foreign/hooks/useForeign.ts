@@ -1,8 +1,8 @@
-import { ForeignResponse } from "@/pages/api/type";
+import { ExchangeResponse } from "@/pages/api/utils/getExchange";
 import { useQuery } from "@tanstack/react-query";
 
 const useForeign = () => {
-  const { data, isFetching, refetch } = useQuery<ForeignResponse>({
+  const { data, isFetching, refetch } = useQuery<ExchangeResponse>({
     queryKey: ["Foreign"],
     queryFn: () =>
       fetch("api").then((res) => {

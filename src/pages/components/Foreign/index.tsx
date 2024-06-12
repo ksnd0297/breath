@@ -19,7 +19,7 @@ const Foreign = (props: Props) => {
   const [open, setOpen] = useState(true);
 
   const InfoList = () =>
-    data?.data.map((info, index) => (
+    data?.map((info, index) => (
       <Info key={`${index}-${info.cur_nm}`} data={info} money={money} />
     ));
 
@@ -57,7 +57,7 @@ const Foreign = (props: Props) => {
         <Loading />
       ) : (
         <>
-          {!data?.data || data?.data.length === 0 ? (
+          {!data || data.length === 0 ? (
             <Empty />
           ) : (
             <Row gutter={[20, 20]}>

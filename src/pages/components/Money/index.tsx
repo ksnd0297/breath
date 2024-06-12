@@ -4,17 +4,18 @@ import { SELECT_OPTION_ENUM } from "@/constant/layout";
 import { SELECT_HOUR_TO_SEC } from "@/constant/time";
 import { getItem } from "@/utils/localStorage";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
-  count: number;
-  setCount: Dispatch<SetStateAction<number>>;
-  money: number;
-  setMoney: Dispatch<SetStateAction<number>>;
+  handleSyncMoney: (value: number) => void;
+  handleSyncCount: (value: number) => void;
 }
 
 const Money = (props: Props) => {
-  const { count, setCount, money, setMoney } = props;
+  const { handleSyncMoney, handleSyncCount } = props;
+
+  const [count, setCount] = useState(0);
+  const [money, setMoney] = useState(0);
 
   const info = getItem<Info>("info");
   const time = getItem<Time>("time");
@@ -28,11 +29,15 @@ const Money = (props: Props) => {
     // 경과한 초
     const elapsedSec = elapsedMSec / 1000;
 
+    const breathCount = Math.round(elapsedSec / 4);
+
     // 4초 당 1번 호흡
-    setCount(Math.round(elapsedSec / 4));
+    setCount(breathCount);
+    handleSyncCount(breathCount);
 
     const interval = setInterval(() => {
       setCount((prev: number) => prev + 1);
+      handleSyncCount(count + 1);
     }, 4000);
 
     return () => {
@@ -58,7 +63,10 @@ const Money = (props: Props) => {
       wagePerSec = wage / SELECT_HOUR_TO_SEC[SELECT_OPTION_ENUM.YEARLY];
     }
 
-    setMoney(+(elapsedSec * wagePerSec).toFixed(2));
+    const earnMoney = +(elapsedSec * wagePerSec).toFixed(2);
+
+    setMoney(earnMoney);
+    handleSyncMoney(earnMoney);
   }, [count]);
 
   return (

@@ -1,5 +1,6 @@
-import { formatDateWithoutTime } from "@/utils/date";
-import https from "https";
+import { formatDateWithoutTime } from '@/utils/date';
+import https from 'https';
+import fetch from 'node-fetch';
 
 /**
  * result : 조회 결과
@@ -15,47 +16,47 @@ import https from "https";
  * kfrtc_bkpr : 서울외국환중개장부가격
  */
 interface Item {
-  result: number;
-  cur_unit: string;
-  ttb: string;
-  tts: string;
-  deal_bas_r: string;
-  bkpr: string;
-  yy_efee_r: string;
-  ten_dd_efee_r: string;
-  kftc_bkpr: string;
-  kftc_deal_bas_r: string;
-  cur_nm: string;
+    result: number;
+    cur_unit: string;
+    ttb: string;
+    tts: string;
+    deal_bas_r: string;
+    bkpr: string;
+    yy_efee_r: string;
+    ten_dd_efee_r: string;
+    kftc_bkpr: string;
+    kftc_deal_bas_r: string;
+    cur_nm: string;
 }
 
 export type ExchangeResponse = Item[];
 
 interface Props {
-  searchDate: Date;
+    searchDate: Date;
 }
 
 const getExchange = async (props: Props) => {
-  const { searchDate } = props;
+    const { searchDate } = props;
 
-  const httpsAgent = new https.Agent({
-    rejectUnauthorized: false,
-  });
+    const httpsAgent = new https.Agent({
+        rejectUnauthorized: false,
+    });
 
-  const res = await fetch(
-    `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${formatDateWithoutTime(searchDate)}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      agent: httpsAgent,
-    },
-  );
+    const res = await fetch(
+        `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${formatDateWithoutTime(searchDate)}`,
+        {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            agent: httpsAgent,
+        },
+    );
 
-  const data = (await res.json()) as ExchangeResponse;
+    const data = (await res.json()) as ExchangeResponse;
 
-  return data;
+    return data;
 };
 
 export default getExchange;

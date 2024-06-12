@@ -12,19 +12,19 @@
  * kfrtc_bkpr : 서울외국환중개장부가격
  */
 export type ForeignResponse = {
-    data: ForeignInfo[]
-}
+  data: ForeignInfo[];
+};
 
 export type ForeignInfo = {
-    result?: number 
-    cur_unit?: string
-    cur_nm?: string
-    ttb?: string
-    tts?: string
-    deal_bas_r?: string
-    bkpr?: string
-    yy_efee_r?: string
-    ten_dd_efee_r?: string
-    kftc_deal_bas_r?: string
-    kftc_bkpr?: string
-} 
+  result?: number;
+  cur_unit?: string;
+  cur_nm?: string;
+  ttb?: string;
+  tts?: string;
+  deal_bas_r?: string;
+  bkpr?: string;
+  yy_efee_r?: string;
+  ten_dd_efee_r?: string;
+  kftc_deal_bas_r?: string;
+  kftc_bkpr?: string;
+};

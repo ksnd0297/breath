@@ -1,8 +1,18 @@
-import {withSentryConfig} from "@sentry/nextjs";
+import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["rc-util", "@ant-design", "kitchen-flow-editor", "@ant-design/pro-editor", "zustand", "leva", "antd", "rc-pagination", "rc-picker"],
+  transpilePackages: [
+    "rc-util",
+    "@ant-design",
+    "kitchen-flow-editor",
+    "@ant-design/pro-editor",
+    "zustand",
+    "leva",
+    "antd",
+    "rc-pagination",
+    "rc-picker",
+  ],
   pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
 };
 

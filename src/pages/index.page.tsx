@@ -1,7 +1,7 @@
 import { Divider, message } from 'antd';
 import dynamic from 'next/dynamic';
 import { Loading } from './components/Money';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Money = dynamic(() => import('./components/Money'), {
     ssr: false,
@@ -34,6 +34,16 @@ export default function Home() {
 
         setTick(prev => prev + 1);
     };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleSync();
+        }, 10000);
+
+        return () => {
+            clearTimeout(interval);
+        };
+    }, []);
 
     const handleSyncMoney = (value: number) => {
         syncMoney.current = value;

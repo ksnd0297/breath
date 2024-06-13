@@ -2,6 +2,7 @@ import ContentWrapper from '@/components/ContentWrapper';
 import { Info, Name, Time } from '@/components/Modal';
 import { SELECT_OPTION_ENUM } from '@/constant/layout';
 import { SELECT_HOUR_TO_SEC } from '@/constant/time';
+import { formatSecondToTime } from '@/utils/date';
 import { getItem } from '@/utils/localStorage';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
@@ -72,10 +73,13 @@ const Money = (props: Props) => {
     return (
         <ContentWrapper title={`${name?.name ? `${name?.name} 님이` : ''} 숨만쉬며 번 돈`}>
             <p>
-                당신은 지금까지 <span className="font-bold">{count}</span> 번 숨을 쉬었으며
+                당신은 지금까지 <span className="font-bold">{count}</span>번 숨을 쉬었으며
             </p>
             <p>
-                <span className="font-bold">{money.toLocaleString()}</span> 원을 벌었어요
+                <span className="font-bold">{formatSecondToTime(count * 4)}</span>가 흘렀으며
+            </p>
+            <p>
+                <span className="font-bold">{money.toLocaleString()}</span>원을 벌었어요
             </p>
         </ContentWrapper>
     );

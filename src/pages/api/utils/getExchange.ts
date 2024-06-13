@@ -51,7 +51,6 @@ const getExchange = async (props: Props) => {
                 'Content-Type': 'application/json',
             },
             agent: httpsAgent,
-            redirect: undefined,
         },
     );
 

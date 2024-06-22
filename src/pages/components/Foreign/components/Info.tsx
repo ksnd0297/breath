@@ -1,4 +1,4 @@
-import { ExchangeResponse } from '@/pages/api/utils/getExchange';
+import { ExchangeResponse } from '@/pages/api/index.page';
 import { getKoreanPostPosition } from '@/utils/string';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Col, Flex, Popover } from 'antd';

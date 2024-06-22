@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint --fix",
+    "check-all": "tsc --noEmit && next lint --fix",
     "prepare": "husky",
-    "postinstall": "yarn husky init && echo 'yarn lint --fix' > .husky/pre-commit"
+    "postinstall": "yarn husky init && echo 'yarn check-all' > .husky/pre-commit"
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.7",

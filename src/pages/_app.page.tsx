@@ -10,6 +10,9 @@ import { ConfigProvider } from 'antd';
 import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import localFont from 'next/font/local';
+
+const myFont = localFont({ src: '../../public/fonts/handLetter.ttf', variable: '--font-inter' });
 
 export default function App({ Component, pageProps }: AppProps) {
     const [queryClient] = useState(() => new QueryClient());
@@ -21,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
     };
 
     return (
-        <>
+        <main className={`${myFont.variable} font-sans`}>
             <QueryClientProvider client={queryClient}>
                 <Meta />
                 <GoogleTag />
@@ -36,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </StyleProvider>
                 <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
             </QueryClientProvider>
-        </>
+        </main>
     );
 }
 

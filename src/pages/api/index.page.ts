@@ -1,5 +1,4 @@
 import { isSameDay, isWeekend, subDays } from 'date-fns';
-import { wrapApiHandlerWithSentry } from '@sentry/nextjs';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import getRestDeInfo from './utils/getRestInfo';
@@ -23,4 +22,4 @@ async function handler(req: NextApiRequest, response: NextApiResponse) {
     }
 }
 
-export default wrapApiHandlerWithSentry(handler, '/api');
+export default handler;

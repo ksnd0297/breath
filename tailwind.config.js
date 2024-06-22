@@ -14,6 +14,10 @@ module.exports = {
                 102: '28rem',
                 128: '32rem',
             },
+            fontFamily: {
+                sans: ['var(--font-inter)'],
+                mono: ['var(--font-roboto-mono)'],
+            },
         },
     },
     plugins: [],

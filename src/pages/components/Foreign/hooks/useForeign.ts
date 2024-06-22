@@ -1,4 +1,4 @@
-import { ExchangeResponse } from '@/pages/api/utils/getExchange';
+import { ExchangeResponse } from '@/pages/api/index.page';
 import { useQuery } from '@tanstack/react-query';
 
 const useForeign = () => {

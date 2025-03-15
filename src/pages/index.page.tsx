@@ -1,14 +1,8 @@
 import { Divider, message } from 'antd';
-import dynamic from 'next/dynamic';
-import { Loading } from './components/Money';
 import { useEffect, useRef, useState } from 'react';
 import Work from './components/Work';
 import Foreign from './components/Foreign';
-
-const Money = dynamic(() => import('./components/Money'), {
-    ssr: false,
-    loading: () => <Loading />,
-});
+import Money from './components/Money';
 
 export default function Home() {
     const [, setTick] = useState(0);

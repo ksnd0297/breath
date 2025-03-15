@@ -4,7 +4,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import getRestDeInfo from './utils/getRestInfo';
 import { formatDateWithoutTime } from '@/utils/date';
 import fetch from 'node-fetch';
-import https from 'https';
 
 /**
  * result : 조회 결과
@@ -42,10 +41,6 @@ interface Props {
 const getExchange = async (props: Props) => {
     const { searchDate } = props;
 
-    const httpsAgent = new https.Agent({
-        rejectUnauthorized: false,
-    });
-
     const res = await fetch(
         `https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=${process.env.FINANCIAL_AUTH_TOKEN}&data=AP01&searchdate=${formatDateWithoutTime(searchDate)}`,
         {
@@ -54,7 +49,6 @@ const getExchange = async (props: Props) => {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            agent: httpsAgent,
         },
     );
 

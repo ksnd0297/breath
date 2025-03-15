@@ -3,13 +3,9 @@ import dynamic from 'next/dynamic';
 import { Loading } from './components/Money';
 import { useEffect, useRef, useState } from 'react';
 import Work from './components/Work';
+import Foreign from './components/Foreign';
 
 const Money = dynamic(() => import('./components/Money'), {
-    ssr: false,
-    loading: () => <Loading />,
-});
-
-const Foreign = dynamic(() => import('./components/Foreign'), {
     ssr: false,
     loading: () => <Loading />,
 });

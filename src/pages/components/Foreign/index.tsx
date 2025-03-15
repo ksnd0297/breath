@@ -16,7 +16,7 @@ const Foreign = (props: Props) => {
 
     const { data, isFetching } = useForeign();
 
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const InfoList = () =>
         data?.map((info, index) => <Info key={`${index}-${info.cur_nm}`} data={info} money={money} />);
@@ -25,6 +25,8 @@ const Foreign = (props: Props) => {
         const timeout = setTimeout(() => {
             setOpen(false);
         }, 3000);
+
+        setOpen(true);
 
         return () => {
             clearTimeout(timeout);

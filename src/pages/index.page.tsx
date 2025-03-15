@@ -2,6 +2,7 @@ import { Divider, message } from 'antd';
 import dynamic from 'next/dynamic';
 import { Loading } from './components/Money';
 import { useEffect, useRef, useState } from 'react';
+import Work from './components/Work';
 
 const Money = dynamic(() => import('./components/Money'), {
     ssr: false,
@@ -9,11 +10,6 @@ const Money = dynamic(() => import('./components/Money'), {
 });
 
 const Foreign = dynamic(() => import('./components/Foreign'), {
-    ssr: false,
-    loading: () => <Loading />,
-});
-
-const Work = dynamic(() => import('./components/Work'), {
     ssr: false,
     loading: () => <Loading />,
 });

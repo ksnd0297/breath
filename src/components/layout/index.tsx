@@ -1,54 +1,56 @@
-import { Divider, Layout as _Layout } from "antd";
-import { Content } from "antd/es/layout/layout";
+import { Divider, Layout as _Layout } from 'antd';
+import { Content } from 'antd/es/layout/layout';
 
-import { ReactNode, useEffect, useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
+import { ReactNode, useEffect, useState } from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
-import dynamic from "next/dynamic";
-import { getItem } from "@/utils/localStorage";
-import { Info } from "../Modal";
+import dynamic from 'next/dynamic';
+import { Info } from '../Modal';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
-const Modal = dynamic(() => import("../Modal"), {
-  ssr: false,
+const Modal = dynamic(() => import('../Modal'), {
+    ssr: false,
 });
 
 interface Props {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 const Layout = (props: Props) => {
-  const { children } = props;
+    const { children } = props;
 
-  const info = getItem<Info>("info");
+    const { state: info, isReady } = useLocalStorage<Info>('info');
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (!info) setIsModalOpen(true);
-  }, [info]);
+    useEffect(() => {
+        if (!isReady) return;
 
-  const handleOpen = () => {
-    setIsModalOpen(true);
-  };
+        if (!info) setIsModalOpen(true);
+    }, [isReady, info]);
 
-  const handleClose = () => {
-    setIsModalOpen(false);
-  };
+    const handleOpen = () => {
+        setIsModalOpen(true);
+    };
 
-  return (
-    <>
-      <_Layout className="bg-sky-50">
-        <Header handleOpen={handleOpen} />
-        <Divider className="my-4 mt-0" />
-        <_Layout className="bg-sky-50">
-          <Content>{children}</Content>
-        </_Layout>
-        <Footer />
-      </_Layout>
-      <Modal isModalOpen={isModalOpen} handleClose={handleClose} />
-    </>
-  );
+    const handleClose = () => {
+        setIsModalOpen(false);
+    };
+
+    return (
+        <>
+            <_Layout className="bg-sky-50">
+                <Header handleOpen={handleOpen} />
+                <Divider className="my-4 mt-0" />
+                <_Layout className="bg-sky-50">
+                    <Content>{children}</Content>
+                </_Layout>
+                <Footer />
+            </_Layout>
+            <Modal isModalOpen={isModalOpen} handleClose={handleClose} />
+        </>
+    );
 };
 
 export default Layout;

@@ -2,8 +2,8 @@ import ContentWrapper from '@/components/ContentWrapper';
 import { Info, Name, Time } from '@/components/Modal';
 import { SELECT_OPTION_ENUM } from '@/constant/layout';
 import { SELECT_HOUR_TO_SEC } from '@/constant/time';
+import useLocalStorage from '@/hooks/useLocalStorage';
 import { formatSecondToTime } from '@/utils/date';
-import { getItem } from '@/utils/localStorage';
 import { LoadingOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 
@@ -18,9 +18,9 @@ const Money = (props: Props) => {
     const [count, setCount] = useState(0);
     const [money, setMoney] = useState(0);
 
-    const info = getItem<Info>('info');
-    const time = getItem<Time>('time');
-    const name = getItem<Name>('name');
+    const { state: info } = useLocalStorage<Info>('info');
+    const { state: time } = useLocalStorage<Time>('time');
+    const { state: name } = useLocalStorage<Name>('name');
 
     useEffect(() => {
         if (!time) return;
